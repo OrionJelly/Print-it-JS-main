@@ -16,6 +16,7 @@ const slides = [
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
+// Récupération des éléments du DOM
 
 const bannerImage = document.querySelector(".banner-img");
 const bannerTagLine = document.getElementById("banner__p");
@@ -28,6 +29,7 @@ const elementsDot = document.getElementsByClassName("dot");
 
 let i = 0;
 
+// Ajout des bullets points 
 
 for (let i = 0; i < slides.length; i++) {
 	const dot = document.createElement("div")
@@ -36,6 +38,7 @@ for (let i = 0; i < slides.length; i++) {
 		
 }
 
+// Fonction changement des chemin d'image et texte à l'intérieur des balises <p></p>
 
 function slideContent() {
         
@@ -43,7 +46,9 @@ function slideContent() {
     bannerTagLine.innerHTML = `${slides[i].tagLine}`;
 
 }
-   
+
+// Fonction qui permet d'ajouter et supprimmer la classe dot_selected
+
 function addAndRemoveSelectedDot () {
     for (let i = 0 ; i < elementsDot.length; i++) {
         
@@ -52,21 +57,22 @@ function addAndRemoveSelectedDot () {
     elementsDot[i].classList.add("dot_selected")
 }
 
+
 addAndRemoveSelectedDot() 
+
+// EventListener
 
 arrowLeft.addEventListener("click", () => {
 	i--
     if (i == -1)
-    i = 3
+    i = slides.length -1
     slideContent();
     addAndRemoveSelectedDot();
 
     
 })
 
-
 arrowRight.addEventListener("click", () => { 
-    
 	i++
     if (i == 4)
     i = 0	
